@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Messages\ErrorMessage;
 use App\Messages\InfoMessage;
 use App\Messages\Messages;
-use App\Models\Transaction;
 use App\Services\GetSummary;
 use App\Services\GetUserAccounts;
 use App\Services\HistoryServices\ReadHistoryService;
@@ -13,9 +12,7 @@ use App\Services\HistoryServices\WriteHistoryService;
 use App\Services\TransferServices\PaymentConfirmationService;
 use App\Services\TransferServices\TransferService;
 use App\Validations\TransferFormValidation;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Throwable;
 
 
 class HomeController extends Controller
@@ -61,8 +58,6 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-//        var_dump($_SESSION);
-//        $_SESSION['confirmPayment'] = false;
 
         $user = auth()->user();
         $_SESSION['uniqID'] = $user->uniqId;
@@ -85,11 +80,11 @@ class HomeController extends Controller
             $_SESSION['infoMsg'],
             $_SESSION['paymentData']
         );
-        session_destroy(); //todo
+//        session_destroy(); //todo
 
     }
 
-    public function indexRedirect(Request $request)
+    public function indexRedirect()
     {
 
         if (isset($_POST['toAccount'])) {

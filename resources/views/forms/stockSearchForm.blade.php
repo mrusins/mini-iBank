@@ -8,7 +8,7 @@
 
 {{Form::submit('addStock')}}
 
-
 {!! Form::close() !!}
+
 
 

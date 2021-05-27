@@ -24,14 +24,10 @@ use Laravel\Jetstream\ConfirmsPasswords;
 session_start();
 
 Route::get('/', function () {
-//    return view('welcome');
     return redirect()->route('index');
-
 });
 
 
-
-//Route::post('/register', [Register::class, 'register']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/main', [HomeController::class, 'index'])->name('index');
 Route::middleware(['auth:sanctum', 'verified'])->post('/main', [HomeController::class, 'indexRedirect']);
 Route::middleware(['auth:sanctum', 'verified'])->post('/confirmPayment', [HomeController::class, 'confirmPayment']);
@@ -39,8 +35,11 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/cancelPayment', [HomeCon
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/tools', [FinToolsController::class, 'index'])->name('tools');
 Route::middleware(['auth:sanctum', 'verified'])->get('/showrates', [FinToolsController::class, 'showRates']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/hiderates', [FinToolsController::class, 'hideRates']); //todo vajag?
 
 Route::middleware(['auth:sanctum', 'verified'])->post('/addstock', [FinToolsController::class, 'addStock'])->name('addStock');
+Route::middleware(['auth:sanctum', 'verified'])->post('/sellStock', [FinToolsController::class, 'sellStock'])->name('sellStock');
+Route::middleware(['auth:sanctum', 'verified'])->post('/updatestocks', [FinToolsController::class, 'updateStocks'])->name('updateStocks');
 
 
 

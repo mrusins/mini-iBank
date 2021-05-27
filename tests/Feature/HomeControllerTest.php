@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use http\Client\Curl\User;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -15,6 +15,9 @@ class HomeControllerTest extends TestCase
     public function test_example()
     {
 
+        $user = User::factory()->create();
+//        $this->actingAs($user);
+//        $this->withoutExceptionHandling(); //todo helps to catch error
 
         $response = $this->post('/main',
         [
@@ -24,7 +27,7 @@ class HomeControllerTest extends TestCase
         ]);
 
 
-        $response->assertStatus(200);
+        $response->assertRedirect('/main');
 
     }
 }

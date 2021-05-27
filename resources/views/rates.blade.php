@@ -4,7 +4,7 @@
 
 
 @elseif($viewRates === false)
-    <a href="{{action('FinToolsController@showRates')}}">Hide currency rates</a>
+    <a href="{{action('FinToolsController@hideRates')}}">Hide currency rates</a>
 
 <div>
     Actual currencies rate @

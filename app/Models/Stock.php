@@ -13,5 +13,6 @@ class Stock extends Model
         'actual_price',
         'starting_price',
         'total',
+        'uniq_id'
     ];
 }
